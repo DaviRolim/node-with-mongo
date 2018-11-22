@@ -5,7 +5,7 @@ let _db
 
 const startDB = async callback => {
     try {
-        const client = await MongoClient.connect('mongodb+srv://davirolim:davi1234@cluster0-mkoaq.mongodb.net/shop?retryWrites=true')
+        const client = await MongoClient.connect(process.env.urlConnection)
         _db = client.db()
         callback()
     } catch (error) {
