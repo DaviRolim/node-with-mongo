@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use( async (req,res,next) => {
     try {
         const user = await User.findById('5bf5b98a68c0e45d12979984')
-        req.user = user
+        req.user = new User(user.name, user.email, user.cart, user._id)
         next()
     } catch (error) {
         console.log(error);
@@ -34,5 +34,6 @@ app.use(shopRoutes);
 app.use(errorController.get404);
 
 startDB(() => {
-    app.listen(3000)
+    console.log("connected to database");
 })
+app.listen(3000)

@@ -10,7 +10,6 @@ const startDB = async callback => {
         callback()
     } catch (error) {
         console.log(error);
-        throw error
     }
 }
 
